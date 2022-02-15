@@ -1,0 +1,38 @@
+<div class="row url-form-block">
+  <div class="col-md-12">
+    <%= render partial: 'form.html.erb' %>
+  </div>
+</div>
+<div class="row url-list-block" style="margin-top:20px;">
+  <div class="col-md-1"></div>
+  <div class="col-md-10 text-center">
+    <table class="table table-bordered" style="font-size: 14px;">
+      <thead>
+        <tr>
+          <th>Original URL</th>
+          <th>Created at</th>
+          <th>Short URL</th>
+          <th>Clicks</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @urls.count > 0 %>
+          <% @urls.each do |url| %>
+            <tr>
+              <td><%= link_to url.original_url, target: "_blank" do %><%= url.original_url %><% end %></td>
+              <td><%= url.created_at.strftime('%b %d, %Y') %></td>
+              <td><%= link_to url.short_url, target: "_blank" do %><%= url.short_url %><% end %></td>
+              <td><%= url.clicks %></td>
+              <td><%= link_to url_path(id: url.id), method: :delete do %>Delete<% end %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="5">No URLs Shortened</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

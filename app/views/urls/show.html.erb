@@ -1,0 +1,7 @@
+<div class="row error-block" style="padding:40px;">
+  <div class="col-md-12 text-center">
+    <h1>Oops!</h1>
+    <p>No such URL exists.</p>
+    <p><%= link_to root_path do %><%= "#{request.protocol}#{request.host_with_port}" %><% end %></p>
+  </div>
+</div>

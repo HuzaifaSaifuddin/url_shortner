@@ -1,0 +1,15 @@
+<%= form_for Url.new, class: "new-url-form" do |f| %>
+  <%= f.hidden_field :short_url, value: "#{request.protocol}#{request.host_with_port}/#{Time.now.to_i}" %>
+  <%= f.hidden_field :short_url_path, value: "#{Time.now.to_i}" %>
+  <div class="row" style="background: #376dd1;color:#fff;padding:40px;">
+    <div class="col-md-12">
+      <h3>Shorten Your Links</h3>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :original_url, class: "form-control url_original_url", placeholder: "Your original URL here" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.submit "Shorten URL", class: "btn btn-info btn-xs", style: "background:#fff;color:#039be5" %>
+    </div>
+  </div>
+<% end %>
